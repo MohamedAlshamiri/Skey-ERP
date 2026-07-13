@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\YemenSoft\\SKeyERP\\src\\SKeyAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{33D822B4-CFED-55BE-A36B-42A30D6F84F9}|SKeyAPI\\SKeyAPI.csproj|d:\\yemensoft\\skeyerp\\src\\skeyapi\\skeyapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{33D822B4-CFED-55BE-A36B-42A30D6F84F9}|SKeyAPI\\SKeyAPI.csproj|solutionrelative:skeyapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{33D822B4-CFED-55BE-A36B-42A30D6F84F9}|SKeyAPI\\SKeyAPI.csproj|d:\\yemensoft\\skeyerp\\src\\skeyapi\\skeyapi\\skeyapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{33D822B4-CFED-55BE-A36B-42A30D6F84F9}|SKeyAPI\\SKeyAPI.csproj|solutionrelative:skeyapi\\skeyapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SKeyAPI.csproj",
+              "DocumentMoniker": "D:\\YemenSoft\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
+              "RelativeDocumentMoniker": "SKeyAPI\\SKeyAPI.csproj",
+              "ToolTip": "D:\\YemenSoft\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
+              "RelativeToolTip": "SKeyAPI\\SKeyAPI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-13T19:26:45.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\YemenSoft\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\Program.cs",
+              "RelativeDocumentMoniker": "SKeyAPI\\Program.cs",
+              "ToolTip": "D:\\YemenSoft\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\Program.cs",
+              "RelativeToolTip": "SKeyAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-13T19:17:16.15Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
