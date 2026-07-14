@@ -1001,6 +1001,7 @@
       },
       "SKey.Application/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.9",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.9",
           "SKey.Domain": "1.0.0"
         },

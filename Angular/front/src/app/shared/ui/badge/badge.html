@@ -1,0 +1,20 @@
+<span
+    class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full border transition-colors duration-200"
+    [ngClass]="{
+    'bg-green-50 text-green-700 border-green-200': type === 'success',
+    'bg-red-50 text-red-700 border-red-200': type === 'error',
+    'bg-purple-50 text-purple-700 border-purple-200': type === 'processing',
+    'bg-slate-100 text-slate-700 border-slate-200': type === 'default',
+    'bg-yellow-50 text-yellow-700 border-yellow-200': type === 'warning'
+  }">
+    @if (showDot) {
+    <span class="w-1.5 h-1.5 rounded-full" [ngClass]="{
+        'bg-green-500': type === 'success',
+        'bg-red-500': type === 'error',
+        'bg-purple-500': type === 'processing',
+        'bg-slate-400': type === 'default',
+        'bg-yellow-500': type === 'warning'
+      }"></span>
+    }
+    <span class="font-cairo">{{ text }}</span>
+</span>

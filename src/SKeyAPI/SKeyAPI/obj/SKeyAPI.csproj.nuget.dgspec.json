@@ -10,7 +10,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
         "projectName": "SKey.Application",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -56,6 +56,10 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[10.0.9, )"
+            },
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[10.0.9, )"
@@ -361,7 +365,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
         "projectName": "SKey.Domain",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -702,7 +706,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
         "projectName": "SKey.Infrastructure",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -1060,7 +1064,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
         "projectName": "SKey.Persistence",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -1432,7 +1436,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
         "projectName": "SKeyAPI",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

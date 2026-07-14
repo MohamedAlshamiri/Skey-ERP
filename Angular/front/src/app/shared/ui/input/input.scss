@@ -1,0 +1,15 @@
+/* إخفاء أيقونة إظهار كلمة المرور وزر المسح الافتراضي في متصفح Edge / Internet Explorer */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none !important;
+}
+
+/* إخفاء أيقونات التعبئة التلقائية وإظهار كلمة المرور الافتراضية في Chrome / WebKit */
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+}

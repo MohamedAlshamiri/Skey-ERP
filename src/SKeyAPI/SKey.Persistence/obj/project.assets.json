@@ -1397,6 +1397,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "10.0.9",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.9",
           "SKey.Domain": "1.0.0"
         },
@@ -4052,7 +4053,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -4061,7 +4062,7 @@
       "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
       "projectName": "SKey.Persistence",
       "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
       "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

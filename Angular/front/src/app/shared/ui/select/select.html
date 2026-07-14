@@ -1,0 +1,75 @@
+<div class="skey-select-wrapper flex flex-col gap-1.5 text-right w-full" [class.opacity-60]="disabled">
+
+  @if (label) {
+  <label class="text-sm font-medium text-slate-700">{{ label }}</label>
+  }
+
+  <!-- Trigger Button -->
+  <div class="relative" (click)="toggleDropdown()">
+    <div
+      class="skey-select-trigger flex items-center justify-between w-full rounded-xl border bg-slate-50 px-3 py-2 text-sm cursor-pointer select-none transition duration-200"
+      [ngClass]="{
+        'border-brand-primary bg-white ring-4 ring-skyerp-100': isOpen,
+        'border-slate-200 hover:border-slate-300': !isOpen,
+        'cursor-not-allowed': disabled
+      }">
+
+      <!-- Selected value or placeholder -->
+      <span [ngClass]="hasValue ? 'text-slate-800' : 'text-slate-400'">
+        {{ hasValue ? selectedLabel : placeholder }}
+      </span>
+
+      <!-- Right side: clear + chevron -->
+      <div class="flex items-center gap-1 mr-auto">
+
+        <!-- Clear button -->
+        @if (hasValue && allowClear && !disabled) {
+        <button type="button" (click)="clearValue($event)"
+          class="text-slate-400 hover:text-slate-600 flex items-center justify-center w-4 h-4 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor" class="size-3.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+        }
+
+        <!-- Chevron -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+          stroke="currentColor"
+          class="size-4 text-slate-400 transition-transform duration-200"
+          [class.rotate-180]="isOpen">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Dropdown Panel -->
+    @if (isOpen) {
+    <div
+      class="absolute z-50 mt-1.5 w-full rounded-2xl border border-slate-100 bg-white shadow-xl shadow-slate-200/60 overflow-hidden py-1">
+
+      @for (opt of options; track opt.value) {
+      <div (click)="selectOption(opt)"
+        class="flex items-center justify-between px-3 py-2 text-sm cursor-pointer transition duration-150 rounded-lg mx-1"
+        [ngClass]="{
+          'bg-brand-light text-brand-primary font-semibold': _value === opt.value,
+          'text-slate-700 hover:bg-slate-50': _value !== opt.value
+        }">
+        {{ opt.label }}
+        @if (_value === opt.value) {
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+          stroke="currentColor" class="size-3.5 shrink-0">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+        </svg>
+        }
+      </div>
+      }
+
+      @empty {
+      <div class="px-3 py-2 text-sm text-slate-400">لا توجد خيارات</div>
+      }
+    </div>
+    }
+  </div>
+
+</div>

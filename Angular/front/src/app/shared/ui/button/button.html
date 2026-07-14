@@ -1,0 +1,16 @@
+<button nz-button [type]="type" [nzType]="nzType" [nzSize]="nzSize" [nzDanger]="nzDanger" [nzBlock]="block"
+    [disabled]="disabled"
+    class="skey-button inline-flex items-center justify-center gap-2 rounded-2xl border-0 font-semibold transition focus:outline-none focus:ring-2 focus:ring-brand-primary disabled:cursor-not-allowed disabled:opacity-60 min-w-[5rem]"
+    [ngClass]="{
+    'bg-brand-primary hover:bg-brand-hover text-white shadow-md shadow-brand/20': variant === 'primary',
+    'bg-brand-light hover:bg-skyerp-100 text-brand-primary border border-skyerp-200': variant === 'default',
+    'border-2 border-dashed border-slate-300 hover:border-brand-primary text-slate-600': variant === 'dashed',
+    'bg-red-600 hover:bg-red-700 text-white': variant === 'danger',
+    'underline-offset-2 hover:underline text-brand-primary': variant === 'link',
+    'px-6 py-3.5 text-base': size === 'lg',
+    'px-4 py-2.5 text-sm': size === 'md',
+    'px-3 py-1.5 text-xs': size === 'sm',
+    'w-full': block
+  }">
+    <ng-content></ng-content>
+</button>

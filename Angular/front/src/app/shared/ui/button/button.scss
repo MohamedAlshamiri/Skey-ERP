@@ -1,0 +1,100 @@
+/* Overrides for NG-Zorro buttons to match Tailwind design system */
+:host {
+  display: inline-block;
+  &.w-full {
+    display: block;
+    width: 100%;
+  }
+}
+
+button.skey-button.ant-btn {
+  font-family: inherit;
+  border-radius: 1rem !important; /* rounded-xl */
+  transition: all 0.2s ease-in-out;
+  border: none;
+  box-shadow: none;
+
+  /* Primary Button style */
+  &.ant-btn-primary {
+    background-color: #102f90 !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(16, 47, 144, 0.2) !important;
+
+    &:hover, &:focus {
+      background-color: #153fc0 !important;
+      color: #ffffff !important;
+    }
+
+    &:disabled {
+      background-color: #cbd5e1 !important;
+      color: #94a3b8 !important;
+      box-shadow: none !important;
+    }
+  }
+
+  /* Default / Outline button style */
+  &.ant-btn-default:not(.ant-btn-dangerous) {
+    background-color: #eef2ff !important;
+    color: #102f90 !important;
+    border: 1px solid #dbe8ff !important;
+
+    &:hover, &:focus {
+      background-color: #dbe8ff !important;
+      color: #0b1e60 !important;
+    }
+
+    &:disabled {
+      background-color: #f1f5f9 !important;
+      color: #cbd5e1 !important;
+      border-color: #e2e8f0 !important;
+    }
+  }
+
+  /* Dashed button style */
+  &.ant-btn-dashed {
+    background-color: transparent !important;
+    color: #475569 !important;
+    border: 2px dashed #cbd5e1 !important;
+
+    &:hover, &:focus {
+      border-color: #102f90 !important;
+      color: #102f90 !important;
+    }
+
+    &:disabled {
+      border-color: #e2e8f0 !important;
+      color: #cbd5e1 !important;
+    }
+  }
+
+  /* Danger Button style */
+  &.ant-btn-dangerous {
+    background-color: #dc2626 !important;
+    color: #ffffff !important;
+    border: none !important;
+
+    &:hover, &:focus {
+      background-color: #b91c1c !important;
+      color: #ffffff !important;
+    }
+
+    &:disabled {
+      background-color: #fee2e2 !important;
+      color: #fca5a5 !important;
+    }
+  }
+
+  /* Link Button style */
+  &.ant-btn-link {
+    background: transparent !important;
+    color: #102f90 !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    &:hover, &:focus {
+      color: #153fc0 !important;
+      text-decoration: underline !important;
+    }
+  }
+}
