@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  @apply font-cairo bg-slate-50 text-slate-900;
+}
+
+body, button, input, textarea, select {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+}
+
+/* NG-Zorro Global Overrides using Tailwind */
+.ant-layout, .ant-layout-header, .ant-layout-content, .ant-layout-footer {
+  background: transparent;
+}
+
+.ant-btn {
+  @apply rounded-2xl transition-all duration-200;
+}
+
+.ant-card {
+  @apply rounded-card-lg shadow-soft-card border-slate-100;
+}
+
+.ant-modal-content {
+  @apply rounded-card-lg overflow-hidden;
+}
+
+.ant-select-selector {
+  @apply rounded-2xl !border-slate-200 h-auto py-1;
+}
+
+.ant-table {
+  @apply rounded-card-md overflow-hidden;
+}
