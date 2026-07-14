@@ -1,0 +1,16 @@
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\bin\Debug\net10.0\SKey.Application.deps.json
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\bin\Debug\net10.0\SKey.Application.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\bin\Debug\net10.0\SKey.Application.pdb
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\bin\Debug\net10.0\SKey.Domain.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\bin\Debug\net10.0\SKey.Domain.pdb
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.csproj.AssemblyReference.cache
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.AssemblyInfoInputs.cache
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.AssemblyInfo.cs
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.csproj.CoreCompileInputs.cache
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.sourcelink.json
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.App.F17161E5.Up2Date
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\refint\SKey.Application.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\SKey.Application.pdb
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKey.Application\obj\Debug\net10.0\ref\SKey.Application.dll
