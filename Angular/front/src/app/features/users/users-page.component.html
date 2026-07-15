@@ -1,0 +1,30 @@
+<div class="max-w-7xl mx-auto px-6 py-8 space-y-6" dir="rtl">
+
+  <!-- Header Section -->
+  <users-header (openCreate)="openCreate()"></users-header>
+
+  <!-- Table & Filters Container Card -->
+  <div class="bg-white rounded-2xl border border-slate-200/60 shadow-soft-card overflow-hidden">
+
+    <!-- Filters Row -->
+    <users-filter (filterChange)="onFilterChange($event)"></users-filter>
+
+    <!-- Table Grid -->
+    <users-table
+      [users]="users()"
+      (edit)="openEdit($event)"
+      (delete)="removeUser($event)">
+    </users-table>
+
+    <!-- Pagination Footer -->
+    <skey-pagination
+      [total]="totalUsers"
+      [pageIndex]="currentPage"
+      [pageSize]="pageSize"
+      itemType="مستخدم"
+      (pageIndexChange)="onPageChange($event)">
+    </skey-pagination>
+
+  </div>
+
+</div>

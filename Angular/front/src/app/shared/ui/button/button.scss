@@ -1,6 +1,7 @@
 /* Overrides for NG-Zorro buttons to match Tailwind design system */
 :host {
   display: inline-block;
+
   &.w-full {
     display: block;
     width: 100%;
@@ -9,7 +10,8 @@
 
 button.skey-button.ant-btn {
   font-family: inherit;
-  border-radius: 1rem !important; /* rounded-xl */
+  border-radius: 0.75rem !important;
+  /* rounded-xl */
   transition: all 0.2s ease-in-out;
   border: none;
   box-shadow: none;
@@ -21,7 +23,8 @@ button.skey-button.ant-btn {
     border: none !important;
     box-shadow: 0 4px 12px rgba(16, 47, 144, 0.2) !important;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: #153fc0 !important;
       color: #ffffff !important;
     }
@@ -39,7 +42,8 @@ button.skey-button.ant-btn {
     color: #102f90 !important;
     border: 1px solid #dbe8ff !important;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: #dbe8ff !important;
       color: #0b1e60 !important;
     }
@@ -49,6 +53,57 @@ button.skey-button.ant-btn {
       color: #cbd5e1 !important;
       border-color: #e2e8f0 !important;
     }
+
+    /* Success Button style */
+    &.variant-success {
+      background-color: #0e8345 !important;
+      color: #ffffff !important;
+      border: none !important;
+
+      &:hover,
+      &:focus {
+        background-color: #0b6b38 !important;
+        color: #ffffff !important;
+      }
+    }
+
+    /* CTA Primary Button style */
+    &.variant-cta-primary {
+      background-color: #5df297 !important;
+      color: #0c255c !important;
+      border: none !important;
+      font-weight: bold !important;
+      font-size: 15px !important;
+      padding: 12px 32px !important;
+      height: auto !important;
+      line-height: normal !important;
+
+      &:hover,
+      &:focus {
+        background-color: #4de086 !important;
+        color: #0c255c !important;
+      }
+    }
+
+    /* CTA Secondary Button style */
+    &.variant-cta-secondary {
+      background-color: transparent !important;
+      color: #ffffff !important;
+      border: 1.5px solid #3577e3 !important;
+      /* Blue outline matching the image */
+      font-weight: bold !important;
+      font-size: 15px !important;
+      padding: 12px 32px !important;
+      height: auto !important;
+      line-height: normal !important;
+
+      &:hover,
+      &:focus {
+        background-color: rgba(53, 119, 227, 0.15) !important;
+        border-color: #4e8cfc !important;
+        color: #ffffff !important;
+      }
+    }
   }
 
   /* Dashed button style */
@@ -57,7 +112,8 @@ button.skey-button.ant-btn {
     color: #475569 !important;
     border: 2px dashed #cbd5e1 !important;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       border-color: #102f90 !important;
       color: #102f90 !important;
     }
@@ -74,7 +130,8 @@ button.skey-button.ant-btn {
     color: #ffffff !important;
     border: none !important;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: #b91c1c !important;
       color: #ffffff !important;
     }
@@ -92,7 +149,8 @@ button.skey-button.ant-btn {
     border: none !important;
     box-shadow: none !important;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: #153fc0 !important;
       text-decoration: underline !important;
     }

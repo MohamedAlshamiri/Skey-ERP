@@ -1,9 +1,9 @@
 <div class="flex items-center justify-between gap-4 px-5 py-3.5 border-t border-slate-100 bg-white">
 
   <!-- Left: nav buttons -->
-  <div class="flex items-center gap-1" dir="ltr">
+  <div class="flex items-center gap-1">
 
-    <!-- Prev (arrow left) -->
+    <!-- Prev (arrow right in RTL) -->
     <button
       type="button"
       (click)="selectPage(pageIndex - 1)"
@@ -11,7 +11,7 @@
       class="flex items-center justify-center w-7 h-7 rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition duration-150">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
         stroke="currentColor" class="size-3.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
       </svg>
     </button>
 
@@ -29,7 +29,7 @@
     </button>
     }
 
-    <!-- Next (arrow right) -->
+    <!-- Next (arrow left in RTL) -->
     <button
       type="button"
       (click)="selectPage(pageIndex + 1)"
@@ -37,7 +37,7 @@
       class="flex items-center justify-center w-7 h-7 rounded-lg border border-slate-200 bg-white text-slate-500 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition duration-150">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
         stroke="currentColor" class="size-3.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
     </button>
 

@@ -37,21 +37,16 @@
             <!-- Left side: Search & Icons & Profile Avatar -->
             <div class="flex items-center gap-4">
 
-                <!-- Search bar -->
-                <div class="relative w-56">
-                    <input type="text" placeholder="بحث..."
-                        class="w-full rounded-full border-0 bg-slate-100/90 py-1.5 pr-9.5 pl-3.5 text-xs text-slate-700 placeholder-slate-400 focus:bg-slate-200/50 focus:ring-1 focus:ring-slate-300 outline-none transition duration-150" />
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor"
-                        class="absolute right-3.5 top-1/2 -translate-y-1/2 size-3.5 text-slate-400">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg>
-                </div>
+                <!-- Search bar using custom input -->
+                <skey-input
+                    placeholder="بحث..."
+                    iconRight="<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='currentColor' class='size-4 text-slate-400'><path stroke-linecap='round' stroke-linejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' /></svg>"
+                    class="w-56">
+                </skey-input>
 
                 <!-- Bell Icon -->
                 <button
-                    class="relative p-1 text-slate-400 hover:text-slate-600 transition flex items-center justify-center">
+                    class="relative w-6 h-6 rounded-full bg-white text-black hover:text-[#002d72] hover:border-slate-300 transition flex items-center justify-center cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
                         stroke="currentColor" class="size-4.5">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -60,7 +55,8 @@
                 </button>
 
                 <!-- Help Icon -->
-                <button class="p-1 text-slate-400 hover:text-slate-600 transition flex items-center justify-center">
+                <button
+                    class="w-6 h-6 rounded-full bg-white text-black hover:text-[#002d72] hover:border-slate-300 transition flex items-center justify-center cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8"
                         stroke="currentColor" class="size-4.5">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -82,5 +78,26 @@
     <main class="flex-1">
         <router-outlet></router-outlet>
     </main>
+
+    <!-- ═══ Dashboard Footer ═══ -->
+    <footer class="bg-[#f8fafc] border-t border-slate-200/50 py-5 text-slate-400 text-xs font-medium mt-auto">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+
+            <!-- Right side: Copyright (RTL order: copyright text, then Skey ERP logo) -->
+            <div class="flex items-center gap-1.5 text-slate-400">
+                <span class="font-black text-[#0f2963] text-[13px]">SKey ERP</span>
+                <span>© Skey ERP Solutions. All rights reserved 2024</span>
+            </div>
+
+            <!-- Left side: Links -->
+            <div class="flex items-center gap-6 text-slate-400 font-semibold">
+                <a href="#" class="hover:text-[#002d72] transition">Documentation</a>
+                <a href="#" class="hover:text-[#002d72] transition">Support</a>
+                <a href="#" class="hover:text-[#002d72] transition">Terms of Service</a>
+                <a href="#" class="hover:text-[#002d72] transition">Privacy Policy</a>
+            </div>
+
+        </div>
+    </footer>
 
 </div>

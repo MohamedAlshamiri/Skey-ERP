@@ -10,7 +10,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   styleUrl: './button.scss',
 })
 export class SkeyButtonComponent {
-  @Input() variant: 'primary' | 'default' | 'dashed' | 'danger' | 'link' = 'primary';
+  @Input() variant: 'primary' | 'default' | 'dashed' | 'danger' | 'link' | 'success' | 'cta-primary' | 'cta-secondary' = 'primary';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() size: 'lg' | 'md' | 'sm' = 'md';
   @Input() block = false;
@@ -18,6 +18,9 @@ export class SkeyButtonComponent {
   @Input() loading = false;
 
   get nzType(): 'primary' | 'default' | 'dashed' | 'link' {
+    if (this.variant === 'success' || this.variant === 'cta-primary' || this.variant === 'cta-secondary') {
+      return 'default';
+    }
     return this.variant === 'danger' ? 'default' : (this.variant as any);
   }
 

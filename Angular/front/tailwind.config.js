@@ -33,8 +33,9 @@ module.exports = {
         }
       },
       borderRadius: {
-        'card-lg': '2rem',
-        'card-md': '1.5rem'
+        'card-lg': '1rem',
+        'card-md': '0.75rem',
+        'card-sm': '0.5rem'
       },
       boxShadow: {
         'soft-card': '0 20px 40px rgba(15, 23, 42, 0.08)'

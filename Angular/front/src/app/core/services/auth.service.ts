@@ -33,6 +33,10 @@ export class AuthService {
     this.router.navigate(['/users']);
   }
 
+  register(credentials: AuthCredentials) {
+    this.login(credentials);
+  }
+
   logout() {
     localStorage.removeItem('skey_token');
     localStorage.removeItem('skey_tenant_id');

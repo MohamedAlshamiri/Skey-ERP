@@ -1,0 +1,93 @@
+<!-- Filter row: Search (wide) | كل الأدوار | كل الحالات | تصفية متقدمة -->
+<div class="flex items-center gap-3 px-5 py-4 border-b border-slate-100">
+
+  <!-- Search Input — using custom input -->
+  <skey-input
+    class="flex-1"
+    placeholder="البحث بالاسم أو البريد الإلكتروني..."
+    [ngModel]="searchQuery"
+    (ngModelChange)="updateQuery($event)"
+    iconRight="<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='size-4 text-slate-400'><path stroke-linecap='round' stroke-linejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' /></svg>">
+  </skey-input>
+
+  <!-- Role Filter — ghost pill button -->
+  <div class="relative" (click)="toggleRoleDropdown()">
+    <button
+      type="button"
+      class="flex items-center gap-1.5 px-4 py-2 rounded-xl border text-sm font-medium transition duration-150 select-none cursor-pointer"
+      [ngClass]="selectedRole
+        ? 'border-brand-primary bg-brand-light text-brand-primary'
+        : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'">
+      {{ selectedRole ? getRoleLabel(selectedRole) : 'كل الأدوار' }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+        stroke="currentColor" class="size-3.5 text-slate-400 transition-transform"
+        [class.rotate-180]="showRoleDropdown">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
+    @if (showRoleDropdown) {
+    <div
+      class="absolute z-30 mt-1.5 w-44 rounded-xl border border-slate-100 bg-white py-1 shadow-xl shadow-slate-200/60">
+      <div (click)="updateRole(null)"
+        class="px-3 py-2 text-sm cursor-pointer transition hover:bg-slate-50"
+        [ngClass]="!selectedRole ? 'text-brand-primary font-semibold' : 'text-slate-700'">
+        كل الأدوار
+      </div>
+      @for (opt of roleOptions; track opt.value) {
+      <div (click)="updateRole(opt.value)"
+        class="px-3 py-2 text-sm cursor-pointer transition hover:bg-slate-50"
+        [ngClass]="selectedRole === opt.value ? 'text-brand-primary font-semibold' : 'text-slate-700'">
+        {{ opt.label }}
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Status Filter — ghost pill button -->
+  <div class="relative" (click)="toggleStatusDropdown()">
+    <button
+      type="button"
+      class="flex items-center gap-1.5 px-4 py-2 rounded-xl border text-sm font-medium transition duration-150 select-none cursor-pointer"
+      [ngClass]="selectedStatus
+        ? 'border-brand-primary bg-brand-light text-brand-primary'
+        : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'">
+      {{ selectedStatus ? (selectedStatus === 'active' ? 'نشط' : 'غير نشط') : 'كل الحالات' }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+        stroke="currentColor" class="size-3.5 text-slate-400 transition-transform"
+        [class.rotate-180]="showStatusDropdown">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
+    @if (showStatusDropdown) {
+    <div
+      class="absolute z-30 mt-1.5 w-36 rounded-xl border border-slate-100 bg-white py-1 shadow-xl shadow-slate-200/60">
+      <div (click)="updateStatus(null)"
+        class="px-3 py-2 text-sm cursor-pointer transition hover:bg-slate-50"
+        [ngClass]="!selectedStatus ? 'text-brand-primary font-semibold' : 'text-slate-700'">
+        كل الحالات
+      </div>
+      @for (opt of statusOptions; track opt.value) {
+      <div (click)="updateStatus(opt.value)"
+        class="px-3 py-2 text-sm cursor-pointer transition hover:bg-slate-50"
+        [ngClass]="selectedStatus === opt.value ? 'text-brand-primary font-semibold' : 'text-slate-700'">
+        {{ opt.label }}
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <!-- Advanced Filter button -->
+  <button
+    type="button"
+    class="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-500 hover:border-slate-300 hover:bg-slate-50 transition duration-150 shrink-0">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" class="size-4">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+    </svg>
+    تصفية متقدمة
+  </button>
+
+</div>
