@@ -3716,11 +3716,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
+      "projectUniqueName": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
       "projectName": "SKeyAPI",
-      "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
+      "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\obj\\",
+      "outputPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3742,11 +3742,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
-              "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
+            "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
+              "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
             },
-            "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {
-              "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj"
+            "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {
+              "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj"
             }
           }
         }
@@ -3802,7 +3802,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

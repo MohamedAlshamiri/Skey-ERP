@@ -3,19 +3,23 @@ import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
+/** Attaches a simple session id header — not a JWT. */
+export const authInterceptor: HttpInterceptorFn = (
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn
+): Observable<HttpEvent<unknown>> => {
   const auth = inject(AuthService);
-  const token = auth.token();
+  const sessionId = auth.sessionId();
 
-  if (!token) {
+  if (!sessionId) {
     return next(req);
   }
 
-  const authorized = req.clone({
-    setHeaders: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-
-  return next(authorized);
+  return next(
+    req.clone({
+      setHeaders: {
+        'X-Session-Id': sessionId
+      }
+    })
+  );
 };

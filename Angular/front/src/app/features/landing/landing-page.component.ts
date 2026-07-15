@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, booleanAttribute, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SkeyButtonComponent } from '../../shared/ui/button/button';
 import { SkeyCardComponent } from '../../shared/ui/card/card';
-
 
 @Component({
   selector: 'app-landing-page',
@@ -14,6 +13,9 @@ import { SkeyCardComponent } from '../../shared/ui/card/card';
 })
 export class LandingPageComponent {
   private sanitizer = inject(DomSanitizer);
+
+  /** When true, hides landing chrome so it can sit inside the app shell (Dashboard). */
+  @Input({ transform: booleanAttribute }) embedded = false;
 
   features: { icon: SafeHtml | string; color: string; title: string; desc: string; }[] = [
     {

@@ -149,7 +149,8 @@ public class UserService : IUserService
             return Result<UserDto>.Conflict($"Email '{email}' is already registered.");
         }
 
-        if (await _userRepository.ExistsByPhoneNumberAsync(phoneNumber, excludeUserId, cancellationToken))
+        if (!string.IsNullOrWhiteSpace(phoneNumber) &&
+            await _userRepository.ExistsByPhoneNumberAsync(phoneNumber, excludeUserId, cancellationToken))
         {
             return Result<UserDto>.Conflict($"PhoneNumber '{phoneNumber}' is already registered.");
         }

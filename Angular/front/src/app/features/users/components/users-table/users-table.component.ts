@@ -11,7 +11,7 @@ import { UserListDto } from '../../models/user.model';
 export class UsersTableComponent {
   @Input() users: UserListDto[] = [];
   @Output() edit = new EventEmitter<UserListDto>();
-  @Output() delete = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<UserListDto>();
 
   getRoleLabel(role: UserListDto['role']): string {
     const labels: Record<UserListDto['role'], string> = {

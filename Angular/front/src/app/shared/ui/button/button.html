@@ -1,5 +1,5 @@
 <button nz-button [type]="type" [nzType]="nzType" [nzSize]="nzSize" [nzDanger]="nzDanger" [nzBlock]="block"
-    [disabled]="disabled || loading" [nzLoading]="loading"
+    [disabled]="disabled || loading" [nzLoading]="loading" (click)="onClick($event)"
     class="skey-button inline-flex items-center justify-center gap-2 rounded-ms border-0 font-semibold transition focus:outline-none focus:ring-2 focus:ring-brand-primary disabled:cursor-not-allowed disabled:opacity-60 min-w-[5rem]"
     [ngClass]="{
     'bg-brand-primary hover:bg-brand-hover text-white shadow-md shadow-brand/20': variant === 'primary',

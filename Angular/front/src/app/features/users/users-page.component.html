@@ -13,7 +13,7 @@
     <users-table
       [users]="users()"
       (edit)="openEdit($event)"
-      (delete)="removeUser($event)">
+      (delete)="askDeleteUser($event)">
     </users-table>
 
     <!-- Pagination Footer -->
@@ -28,3 +28,66 @@
   </div>
 
 </div>
+
+@if (showUserModal()) {
+  <user-form-modal
+    [mode]="modalMode()"
+    [user]="editingUser()"
+    (closed)="closeUserModal()"
+    (saved)="onUserSaved()">
+  </user-form-modal>
+}
+
+@if (userPendingDelete(); as user) {
+  <div class="fixed inset-0 z-[1000] flex items-center justify-center p-4" dir="rtl" role="dialog" aria-modal="true">
+    <div class="absolute inset-0 bg-slate-900/45 backdrop-blur-[6px]"></div>
+
+    <div
+      class="relative w-full max-w-[420px] bg-white rounded-3xl border border-slate-200/80 shadow-[0_25px_50px_-12px_rgba(15,23,42,0.18)] overflow-hidden font-cairo text-right">
+
+      <div class="flex items-center justify-between gap-3 px-6 py-4 bg-slate-50 border-b border-slate-100">
+        <h3 class="text-[1.05rem] font-extrabold text-[#0f2963] m-0">تأكيد الحذف</h3>
+        <button
+          type="button"
+          (click)="cancelDelete()"
+          [disabled]="deleteLoading()"
+          aria-label="إغلاق"
+          class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-5">
+        <p class="text-sm text-slate-600 leading-relaxed m-0">
+          هل أنت متأكد من حذف المستخدم
+          <span class="font-bold text-slate-800">{{ user.name }}</span>؟
+          <br />
+          لا يمكن التراجع عن هذا الإجراء.
+        </p>
+
+        <div class="flex items-center justify-end gap-3 pt-1">
+          <button
+            type="button"
+            (click)="cancelDelete()"
+            [disabled]="deleteLoading()"
+            class="text-sm font-semibold text-slate-500 hover:text-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer px-2 py-1">
+            إلغاء
+          </button>
+
+          <button
+            type="button"
+            (click)="confirmDelete()"
+            [disabled]="deleteLoading()"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-2.5 shadow-md disabled:opacity-60 disabled:cursor-not-allowed transition cursor-pointer border-0">
+            @if (deleteLoading()) {
+              <span class="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+            }
+            تأكيد الحذف
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

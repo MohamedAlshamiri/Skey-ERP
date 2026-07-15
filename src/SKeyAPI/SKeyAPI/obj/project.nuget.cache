@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "23S7x/d3a30=",
+  "dgSpecHash": "f263XUjWWbo=",
   "success": true,
-  "projectFilePath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
+  "projectFilePath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKeyAPI\\SKeyAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\15.1.3\\automapper.15.1.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",

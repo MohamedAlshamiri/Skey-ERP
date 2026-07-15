@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w/mT0HSyHTg=",
+  "dgSpecHash": "tTXPSexXtOQ=",
   "success": true,
-  "projectFilePath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
+  "projectFilePath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\automapper\\15.1.3\\automapper.15.1.3.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",

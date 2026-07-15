@@ -4,7 +4,7 @@
   <nav class="flex items-center justify-between px-6 py-3 bg-transparent border-b border-slate-200/60">
 
     <!-- Right: Brand -->
-    <span class="text-md font-extrabold text-brand tracking-tight">Skey ERP</span>
+    <a routerLink="/" class="text-md font-extrabold text-brand tracking-tight hover:opacity-90 transition">Skey ERP</a>
 
     <!-- Left: Help + Globe -->
     <div class="flex items-center gap-2">
@@ -94,10 +94,15 @@
               </label>
             </div>
 
+            @if (errorMessage()) {
+              <p class="text-xs text-red-500 text-center">{{ errorMessage() }}</p>
+            }
+
             <br>
 
             <!-- Submit -->
-            <skey-button class="w-full" variant="primary" type="submit" size="md" [block]="true" [disabled]="registerForm.invalid">
+            <skey-button class="w-full" variant="primary" type="submit" size="md" [block]="true"
+              [disabled]="registerForm.invalid" [loading]="loading()">
               إنشاء الحساب
             </skey-button>
 

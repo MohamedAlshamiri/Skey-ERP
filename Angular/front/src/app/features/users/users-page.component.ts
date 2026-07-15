@@ -6,10 +6,8 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { UserFormModalComponent } from './components/user-form-modal/user-form-modal.component';
 import { SkeyPaginationComponent } from '../../shared/ui/pagination/pagination';
 import { UsersService } from './services/users.service';
-import { UserListDto, CreateUserRequest, UpdateUserRequest } from './models/user.model';
+import { UserListDto } from './models/user.model';
 import { UserFilterState } from './models/user-filter-state.model';
-import { TenantService } from '../../core/services/tenant.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'users-page',
@@ -19,16 +17,20 @@ import { NzModalService } from 'ng-zorro-antd/modal';
     UsersHeaderComponent,
     UsersFilterComponent,
     UsersTableComponent,
-    SkeyPaginationComponent
+    SkeyPaginationComponent,
+    UserFormModalComponent
   ],
   templateUrl: './users-page.component.html'
 })
 export class UsersPageComponent {
   private usersService = inject(UsersService);
-  private tenantService = inject(TenantService);
-  private modalService = inject(NzModalService);
 
   allFilteredUsers = signal<UserListDto[]>([]);
+  showUserModal = signal(false);
+  modalMode = signal<'create' | 'edit'>('create');
+  editingUser = signal<UserListDto | null>(null);
+  userPendingDelete = signal<UserListDto | null>(null);
+  deleteLoading = signal(false);
 
   private filterState = signal<UserFilterState>({
     query: '',
@@ -60,81 +62,25 @@ export class UsersPageComponent {
   }
 
   openCreate() {
-    const modalRef = this.modalService.create({
-      nzTitle: 'إضافة مستخدم جديد',
-      nzContent: UserFormModalComponent,
-      nzData: {
-        mode: 'create',
-        user: null
-      },
-      nzFooter: null,
-      nzWidth: 500,
-      nzCentered: true,
-      nzMaskClosable: false,
-      nzKeyboard: false,
-      nzOnCancel: (instance) => {
-        if (instance && instance.userForm && instance.userForm.dirty) {
-          return new Promise<boolean>((resolve) => {
-            this.modalService.confirm({
-              nzTitle: 'تأكيد المغادرة',
-              nzContent: 'هل أنت متأكد من مغادرة هذه الصفحة؟ سيتم فقدان التغييرات غير المحفوظة.',
-              nzOkText: 'مغادرة',
-              nzCancelText: 'بقاء',
-              nzOkDanger: true,
-              nzOnOk: () => resolve(true),
-              nzOnCancel: () => resolve(false),
-            });
-          });
-        }
-        return true;
-      },
-      nzClassName: 'rounded-modal-wrapper',
-    });
-
-    modalRef.afterClose.subscribe((r) => {
-      if (r === 'refresh') {
-        this.loadUsers();
-      }
-    });
+    this.modalMode.set('create');
+    this.editingUser.set(null);
+    this.showUserModal.set(true);
   }
 
   openEdit(user: UserListDto) {
-    const modalRef = this.modalService.create({
-      nzTitle: 'تعديل بيانات المستخدم',
-      nzContent: UserFormModalComponent,
-      nzData: {
-        mode: 'edit',
-        user: user
-      },
-      nzFooter: null,
-      nzWidth: 500,
-      nzCentered: true,
-      nzMaskClosable: false,
-      nzKeyboard: false,
-      nzOnCancel: (instance) => {
-        if (instance && instance.userForm && instance.userForm.dirty) {
-          return new Promise<boolean>((resolve) => {
-            this.modalService.confirm({
-              nzTitle: 'تأكيد المغادرة',
-              nzContent: 'هل أنت متأكد من مغادرة هذه الصفحة؟ سيتم فقدان التغييرات غير المحفوظة.',
-              nzOkText: 'مغادرة',
-              nzCancelText: 'بقاء',
-              nzOkDanger: true,
-              nzOnOk: () => resolve(true),
-              nzOnCancel: () => resolve(false),
-            });
-          });
-        }
-        return true;
-      },
-      nzClassName: 'rounded-modal-wrapper',
-    });
+    this.modalMode.set('edit');
+    this.editingUser.set(user);
+    this.showUserModal.set(true);
+  }
 
-    modalRef.afterClose.subscribe((r) => {
-      if (r === 'refresh') {
-        this.loadUsers();
-      }
-    });
+  closeUserModal() {
+    this.showUserModal.set(false);
+    this.editingUser.set(null);
+  }
+
+  onUserSaved() {
+    this.closeUserModal();
+    this.loadUsers();
   }
 
   onFilterChange(change: Partial<UserFilterState>) {
@@ -146,9 +92,29 @@ export class UsersPageComponent {
     this.filterState.update((current) => ({ ...current, page }));
   }
 
-  removeUser(userId: string) {
-    this.usersService.deleteUser(userId).subscribe(() => {
-      this.loadUsers();
+  askDeleteUser(user: UserListDto) {
+    this.userPendingDelete.set(user);
+  }
+
+  cancelDelete() {
+    if (this.deleteLoading()) return;
+    this.userPendingDelete.set(null);
+  }
+
+  confirmDelete() {
+    const user = this.userPendingDelete();
+    if (!user || this.deleteLoading()) return;
+
+    this.deleteLoading.set(true);
+    this.usersService.deleteUser(user.id).subscribe({
+      next: () => {
+        this.deleteLoading.set(false);
+        this.userPendingDelete.set(null);
+        this.loadUsers();
+      },
+      error: () => {
+        this.deleteLoading.set(false);
+      }
     });
   }
 

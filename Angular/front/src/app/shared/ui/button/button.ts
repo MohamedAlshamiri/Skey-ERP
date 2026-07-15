@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @Component({
@@ -10,12 +11,16 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
   styleUrl: './button.scss',
 })
 export class SkeyButtonComponent {
+  private router = inject(Router);
+
   @Input() variant: 'primary' | 'default' | 'dashed' | 'danger' | 'link' | 'success' | 'cta-primary' | 'cta-secondary' = 'primary';
   @Input() type: 'button' | 'submit' | 'reset' = 'button';
   @Input() size: 'lg' | 'md' | 'sm' = 'md';
   @Input() block = false;
   @Input() disabled = false;
   @Input() loading = false;
+  /** Optional internal route (e.g. /auth/login) — design unchanged */
+  @Input() link?: string;
 
   get nzType(): 'primary' | 'default' | 'dashed' | 'link' {
     if (this.variant === 'success' || this.variant === 'cta-primary' || this.variant === 'cta-secondary') {
@@ -30,5 +35,11 @@ export class SkeyButtonComponent {
 
   get nzSize(): 'large' | 'default' | 'small' {
     return this.size === 'lg' ? 'large' : this.size === 'sm' ? 'small' : 'default';
+  }
+
+  onClick(event: Event) {
+    if (this.disabled || this.loading || !this.link) return;
+    event.preventDefault();
+    void this.router.navigateByUrl(this.link);
   }
 }

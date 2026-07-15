@@ -1,109 +1,125 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { CreateUserRequest, UpdateUserRequest, UserListDto } from '../models/user.model';
 import { UserFilterState } from '../models/user-filter-state.model';
 
+/** Backend UserDto shape */
+interface ApiUserDto {
+  id: string;
+  userName: string;
+  phoneNumber: string;
+  email: string;
+  age: number;
+  accountStatus: number;
+  roleId: string;
+  roleName?: string | null;
+}
+
+const ROLE_IDS = {
+  admin: '11111111-1111-1111-1111-111111111111',
+  employee: '22222222-2222-2222-2222-222222222222',
+  customer: '33333333-3333-3333-3333-333333333333'
+} as const;
+
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  readonly users = signal<UserListDto[]>([
-    {
-      id: '1',
-      name: 'أحمد محمد الحريري',
-      email: 'a.hariri@skeyerp.com',
-      role: 'admin',
-      status: 'active',
-      initials: 'أح',
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-14 15:30'
-    },
-    {
-      id: '2',
-      name: 'سارة عبد الله العتيبي',
-      email: 's.otaibi@skeyerp.com',
-      role: 'finance',
-      status: 'active',
-      initials: 'س ع',
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-14 14:15'
-    },
-    {
-      id: '3',
-      name: 'خالد وليد الشمراني',
-      email: 'k.shamrani@skeyerp.com',
-      role: 'operations',
-      status: 'active',
-      initials: 'خ و',
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-13 09:00'
-    },
-    {
-      id: '4',
-      name: 'رنا يوسف البلوشي',
-      email: 'r.balushi@skeyerp.com',
-      role: 'sales',
-      status: 'inactive',
-      initials: 'ر ي',
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-10 17:45'
-    },
-    {
-      id: '5',
-      name: 'عمر ياسر الفيفي',
-      email: 'o.faifi@skeyerp.com',
-      role: 'support',
-      status: 'active',
-      initials: 'ع ي',
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-14 11:20'
-    }
-  ]);
-
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
+  private readonly baseUrl = `${environment.apiUrl}/users`;
 
   getUsers(filter: UserFilterState): Observable<UserListDto[]> {
-    let filtered = this.users();
-    if (filter.query) {
-      const q = filter.query.toLowerCase();
-      filtered = filtered.filter(u => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q));
-    }
-    if (filter.role) {
-      filtered = filtered.filter(u => u.role === filter.role);
-    }
-    if (filter.status) {
-      filtered = filtered.filter(u => u.status === filter.status);
-    }
-    return of(filtered);
+    return this.http.get<ApiUserDto[]>(this.baseUrl).pipe(
+      map((users) => {
+        let mapped = users.map((u) => this.toListDto(u));
+
+        if (filter.query) {
+          const q = filter.query.toLowerCase();
+          mapped = mapped.filter(
+            (u) => u.name.toLowerCase().includes(q) || u.email.toLowerCase().includes(q)
+          );
+        }
+        if (filter.role) {
+          mapped = mapped.filter((u) => u.role === filter.role);
+        }
+        if (filter.status) {
+          mapped = mapped.filter((u) => u.status === filter.status);
+        }
+
+        return mapped;
+      })
+    );
   }
 
   createUser(payload: CreateUserRequest): Observable<UserListDto> {
-    const { password, ...userFields } = payload;
-    const newUser: UserListDto = {
-      ...userFields,
-      id: 'u_' + Date.now(),
-      initials: payload.name.split(' ').map((part) => part[0]).join(''),
-      avatarUrl: undefined,
-      createdAt: new Date().toISOString(),
-      lastLoginAt: undefined
+    const body = {
+      userName: payload.name,
+      email: payload.email,
+      password: payload.password,
+      phoneNumber: payload.mobile?.trim() || this.fallbackPhone(),
+      age: 18,
+      accountStatus: payload.status === 'active' ? 0 : 1,
+      roleId: this.toRoleId(payload.role)
     };
-    this.users.update((list) => [newUser, ...list]);
-    return of(newUser);
+
+    return this.http.post<ApiUserDto>(this.baseUrl, body).pipe(map((u) => this.toListDto(u)));
   }
 
   updateUser(payload: UpdateUserRequest): Observable<UserListDto> {
-    const updatedUser: UserListDto = {
-      ...payload,
-      initials: payload.name.split(' ').map((part) => part[0]).join(''),
-      avatarUrl: undefined,
-      createdAt: new Date().toISOString(),
-      lastLoginAt: '2026-07-14 15:30'
+    const body = {
+      userName: payload.name,
+      email: payload.email,
+      phoneNumber: payload.mobile?.trim() || this.fallbackPhone(),
+      age: 18,
+      accountStatus: payload.status === 'active' ? 0 : 1,
+      roleId: this.toRoleId(payload.role),
+      password: ''
     };
-    this.users.update((list) => list.map((item) => (item.id === payload.id ? updatedUser : item)));
-    return of(updatedUser);
+
+    return this.http
+      .put<ApiUserDto>(`${this.baseUrl}/${payload.id}`, body)
+      .pipe(map((u) => this.toListDto(u)));
   }
 
   deleteUser(id: string): Observable<void> {
-    this.users.update((list) => list.filter((user) => user.id !== id));
-    return of(void 0);
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  private toListDto(user: ApiUserDto): UserListDto {
+    const name = user.userName || user.email;
+    return {
+      id: user.id,
+      name,
+      email: user.email,
+      role: this.toFrontRole(user.roleName, user.roleId),
+      status: user.accountStatus === 0 ? 'active' : 'inactive',
+      initials: name
+        .split(' ')
+        .filter(Boolean)
+        .map((p) => p[0])
+        .join('')
+        .slice(0, 2),
+      createdAt: new Date().toISOString()
+    };
+  }
+
+  private toRoleId(role: CreateUserRequest['role']): string {
+    if (role === 'admin') return ROLE_IDS.admin;
+    if (role === 'support') return ROLE_IDS.customer;
+    return ROLE_IDS.employee;
+  }
+
+  private toFrontRole(
+    roleName: string | null | undefined,
+    roleId: string
+  ): UserListDto['role'] {
+    const name = (roleName || '').toLowerCase();
+    if (name === 'admin' || roleId === ROLE_IDS.admin) return 'admin';
+    if (name === 'customer' || roleId === ROLE_IDS.customer) return 'support';
+    return 'operations';
+  }
+
+  private fallbackPhone(): string {
+    return `0${Date.now().toString().slice(-10)}`;
   }
 }

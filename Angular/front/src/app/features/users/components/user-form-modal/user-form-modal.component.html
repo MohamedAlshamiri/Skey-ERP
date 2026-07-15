@@ -1,48 +1,94 @@
-<div class="flex flex-col text-right font-cairo w-full" dir="rtl">
+<!-- Centered overlay — same look as before, without ng-zorro modal -->
+<div class="fixed inset-0 z-[1000] flex items-center justify-center p-4" dir="rtl" role="dialog" aria-modal="true">
 
-  <!-- Form Body -->
-  <form [formGroup]="userForm" (ngSubmit)="submit()" class="space-y-4">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-slate-900/45 backdrop-blur-[6px]"></div>
 
-    <!-- Name -->
-    <skey-input label="اسم المستخدم" placeholder="أدخل اسم المستخدم الكامل" formControlName="name"></skey-input>
+  <!-- Panel -->
+  <div
+    class="relative w-full max-w-[500px] bg-white rounded-3xl border border-slate-200/80 shadow-[0_25px_50px_-12px_rgba(15,23,42,0.18)] overflow-hidden font-cairo text-right">
 
-    <!-- Email -->
-    <skey-input label="البريد الإلكتروني" placeholder="example@skeyerp.com" type="email"
-      formControlName="email"></skey-input>
+    <!-- Header -->
+    <div class="flex items-center justify-between gap-3 px-6 py-4 bg-slate-50 border-b border-slate-100">
+      <h3 class="text-[1.05rem] font-extrabold text-[#0f2963] m-0">
+        {{ title }}
+      </h3>
 
-    <!-- Password (only in create mode) -->
-    @if (mode === 'create') {
-    <skey-input label="كلمة المرور" placeholder="أدخل كلمة المرور" type="password"
-      formControlName="password"></skey-input>
-    }
-
-    <!-- Role & Status side-by-side -->
-    <div class="grid grid-cols-2 gap-4">
-      <!-- Role -->
-      <skey-select label="الدور الوظيفي" placeholder="اختر الدور" [options]="roleOptions"
-        formControlName="role"></skey-select>
-
-      <!-- Status -->
-      <skey-select label="الحالة" placeholder="اختر الحالة" [options]="statusOptions"
-        formControlName="status"></skey-select>
-    </div>
-
-    <!-- Footer Actions (aligned left: blue button leftmost, then text cancel button) -->
-    <div class="flex items-center justify-end gap-4 pt-4 border-t border-slate-100 mt-2">
-
-      <!-- Cancel Button -->
-      <button type="button" (click)="onClose()" [disabled]="loading"
-        class="text-sm font-semibold text-slate-500 hover:text-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer">
-        إلغاء
+      <!-- Close (X) -->
+      <button
+        type="button"
+        (click)="onClose()"
+        [disabled]="loading"
+        aria-label="إغلاق"
+        class="shrink-0 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
       </button>
-
-      <!-- Save Button -->
-      <skey-button variant="primary" type="submit" [disabled]="userForm.invalid" [loading]="loading">
-        حفظ البيانات
-      </skey-button>
-
     </div>
 
-  </form>
+    <!-- Body -->
+    <div class="p-6">
+      <form [formGroup]="userForm" (ngSubmit)="submit()" class="space-y-4">
 
+        <skey-input
+          label="اسم المستخدم"
+          placeholder="أدخل اسم المستخدم الكامل"
+          formControlName="name">
+        </skey-input>
+
+        <skey-input
+          label="البريد الإلكتروني"
+          placeholder="example@skeyerp.com"
+          type="email"
+          formControlName="email">
+        </skey-input>
+
+        @if (mode === 'create') {
+          <skey-input
+            label="كلمة المرور"
+            placeholder="أدخل كلمة المرور"
+            type="password"
+            formControlName="password">
+          </skey-input>
+        }
+
+        <div class="grid grid-cols-2 gap-4">
+          <skey-select
+            label="الدور الوظيفي"
+            placeholder="اختر الدور"
+            [options]="roleOptions"
+            formControlName="role">
+          </skey-select>
+
+          <skey-select
+            label="الحالة"
+            placeholder="اختر الحالة"
+            [options]="statusOptions"
+            formControlName="status">
+          </skey-select>
+        </div>
+
+        <div class="flex items-center justify-end gap-4 pt-4 border-t border-slate-100 mt-2">
+          <button
+            type="button"
+            (click)="onClose()"
+            [disabled]="loading"
+            class="text-sm font-semibold text-slate-500 hover:text-slate-800 disabled:opacity-50 disabled:cursor-not-allowed transition cursor-pointer">
+            إلغاء
+          </button>
+
+          <skey-button variant="primary" type="submit" [disabled]="userForm.invalid" [loading]="loading">
+            حفظ البيانات
+          </skey-button>
+        </div>
+
+        @if (errorMessage) {
+          <p class="text-xs text-red-500 text-right pt-1">{{ errorMessage }}</p>
+        }
+
+      </form>
+    </div>
+
+  </div>
 </div>

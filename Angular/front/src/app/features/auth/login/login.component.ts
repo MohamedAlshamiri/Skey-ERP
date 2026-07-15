@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -15,32 +15,42 @@ import { SkeyCardComponent } from '../../../shared/ui/card/card';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loading = signal(false);
+  errorMessage = signal<string | null>(null);
 
-  /** SVG icon: building (tenant ID field) */
-  buildingIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.1rem;height:1.1rem">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+  emailIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.1rem;height:1.1rem">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
   </svg>`;
 
-  /** SVG icon: lock (password field) */
   lockIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:1.1rem;height:1.1rem">
     <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
   </svg>`;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.loginForm = this.fb.group({
-      tenantId: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       rememberMe: [false]
     });
   }
 
   submit() {
-    if (this.loginForm.valid) {
-      this.auth.login({
-        tenantId: this.loginForm.value.tenantId,
-        email: this.loginForm.value.tenantId,
+    if (!this.loginForm.valid || this.loading()) return;
+
+    this.loading.set(true);
+    this.errorMessage.set(null);
+
+    this.auth
+      .login({
+        email: this.loginForm.value.email,
         password: this.loginForm.value.password
+      })
+      .subscribe({
+        next: () => this.loading.set(false),
+        error: (err) => {
+          this.loading.set(false);
+          this.errorMessage.set(err?.error?.message || 'فشل تسجيل الدخول. تحقق من البيانات.');
+        }
       });
-    }
   }
 }

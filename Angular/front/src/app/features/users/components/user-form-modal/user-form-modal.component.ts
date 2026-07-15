@@ -1,19 +1,12 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NzModalRef, NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
-import { NzMessageService } from 'ng-zorro-antd/message';
 import { CreateUserRequest, UpdateUserRequest, UserListDto } from '../../models/user.model';
 import { UsersService } from '../../services/users.service';
 import { TenantService } from '../../../../core/services/tenant.service';
 import { SkeyInputComponent } from '../../../../shared/ui/input/input';
 import { SkeySelectComponent, SkeySelectOption } from '../../../../shared/ui/select/select';
 import { SkeyButtonComponent } from '../../../../shared/ui/button/button';
-
-export interface UserModalData {
-  mode: 'create' | 'edit';
-  user?: UserListDto | null;
-}
 
 @Component({
   selector: 'user-form-modal',
@@ -28,22 +21,19 @@ export interface UserModalData {
   templateUrl: './user-form-modal.component.html'
 })
 export class UserFormModalComponent implements OnInit {
-  private modalRef = inject(NzModalRef);
-  private modalData = inject<UserModalData>(NZ_MODAL_DATA, { optional: true });
   private usersService = inject(UsersService);
   private tenantService = inject(TenantService);
-  private message = inject(NzMessageService);
+  private fb = inject(FormBuilder);
+
+  @Input() mode: 'create' | 'edit' = 'create';
+  @Input() user: UserListDto | null = null;
+
+  @Output() closed = new EventEmitter<void>();
+  @Output() saved = new EventEmitter<void>();
 
   loading = false;
-  userForm: FormGroup;
-
-  get mode(): 'create' | 'edit' {
-    return this.modalData?.mode ?? 'create';
-  }
-
-  get user(): UserListDto | null | undefined {
-    return this.modalData?.user;
-  }
+  errorMessage: string | null = null;
+  userForm!: FormGroup;
 
   roleOptions: SkeySelectOption[] = [
     { label: 'مدير نظام', value: 'admin' },
@@ -58,35 +48,44 @@ export class UserFormModalComponent implements OnInit {
     { label: 'غير نشط', value: 'inactive' }
   ];
 
-  constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
-      id: [''],
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: [''],
-      role: ['admin', [Validators.required]],
-      status: ['active', [Validators.required]],
-      mobile: [''],
-      department: ['']
-    });
+  get title(): string {
+    return this.mode === 'create' ? 'إضافة مستخدم جديد' : 'تعديل بيانات المستخدم';
   }
 
   ngOnInit() {
-    const passwordCtrl = this.userForm.get('password');
-    if (this.mode === 'create') {
-      passwordCtrl?.setValidators([Validators.required]);
-    } else {
-      passwordCtrl?.clearValidators();
-    }
-    passwordCtrl?.updateValueAndValidity();
+    this.userForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: [''],
+      role: ['admin', Validators.required],
+      status: ['active', Validators.required],
+      mobile: [''],
+      department: ['']
+    });
 
-    if (this.user) {
-      this.userForm.patchValue(this.user);
-      this.userForm.get('id')?.setValue(this.user.id);
-      this.userForm.get('password')?.setValue('');
+    if (this.mode === 'create') {
+      this.userForm.get('password')?.setValidators([Validators.required]);
     } else {
-      this.userForm.reset({ role: 'admin', status: 'active', password: '' });
+      this.userForm.get('password')?.clearValidators();
     }
+    this.userForm.get('password')?.updateValueAndValidity();
+
+    if (this.mode === 'edit' && this.user) {
+      this.userForm.patchValue({
+        name: this.user.name,
+        email: this.user.email,
+        role: this.user.role,
+        status: this.user.status,
+        mobile: '',
+        department: '',
+        password: ''
+      });
+    }
+  }
+
+  onClose() {
+    if (this.loading) return;
+    this.closed.emit();
   }
 
   submit() {
@@ -96,6 +95,7 @@ export class UserFormModalComponent implements OnInit {
     }
 
     this.loading = true;
+    this.errorMessage = null;
     const formValue = this.userForm.getRawValue();
 
     if (this.mode === 'create') {
@@ -113,40 +113,35 @@ export class UserFormModalComponent implements OnInit {
       this.usersService.createUser(payload).subscribe({
         next: () => {
           this.loading = false;
-          this.message.success('تم إضافة المستخدم بنجاح');
-          this.modalRef?.close('refresh');
+          this.saved.emit();
         },
-        error: () => {
+        error: (err) => {
           this.loading = false;
-          this.message.error('فشل إضافة المستخدم');
+          this.errorMessage = err?.error?.message || 'فشل حفظ المستخدم';
         }
       });
-    } else {
-      const payload: UpdateUserRequest = {
-        id: this.user!.id,
-        name: formValue.name,
-        email: formValue.email,
-        role: formValue.role,
-        status: formValue.status,
-        mobile: formValue.mobile,
-        department: formValue.department
-      };
-
-      this.usersService.updateUser(payload).subscribe({
-        next: () => {
-          this.loading = false;
-          this.message.success('تم تعديل بيانات المستخدم بنجاح');
-          this.modalRef?.close('refresh');
-        },
-        error: () => {
-          this.loading = false;
-          this.message.error('فشل تعديل بيانات المستخدم');
-        }
-      });
+      return;
     }
-  }
 
-  onClose() {
-    this.modalRef?.triggerCancel();
+    const payload: UpdateUserRequest = {
+      id: this.user!.id,
+      name: formValue.name,
+      email: formValue.email,
+      role: formValue.role,
+      status: formValue.status,
+      mobile: formValue.mobile,
+      department: formValue.department
+    };
+
+    this.usersService.updateUser(payload).subscribe({
+      next: () => {
+        this.loading = false;
+        this.saved.emit();
+      },
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = err?.error?.message || 'فشل حفظ المستخدم';
+      }
+    });
   }
 }

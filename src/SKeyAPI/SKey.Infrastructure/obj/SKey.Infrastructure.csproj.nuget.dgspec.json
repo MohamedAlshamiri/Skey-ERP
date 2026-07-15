@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {}
+    "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
+    "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
+        "projectUniqueName": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
         "projectName": "SKey.Application",
-        "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
+        "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\obj\\",
+        "outputPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
-                "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj"
+              "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
+                "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj"
               }
             }
           }
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -371,14 +371,14 @@
         }
       }
     },
-    "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
+    "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
+        "projectUniqueName": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
         "projectName": "SKey.Domain",
-        "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
+        "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\obj\\",
+        "outputPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -434,7 +434,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -712,14 +712,14 @@
         }
       }
     },
-    "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {
+    "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
+        "projectUniqueName": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
         "projectName": "SKey.Infrastructure",
-        "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
+        "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\obj\\",
+        "outputPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -741,11 +741,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
-                "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
+              "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
+                "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
               },
-              "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj": {
-                "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj"
+              "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj": {
+                "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj"
               }
             }
           }
@@ -792,7 +792,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1070,14 +1070,14 @@
         }
       }
     },
-    "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj": {
+    "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
+        "projectUniqueName": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
         "projectName": "SKey.Persistence",
-        "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
+        "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\SKey.Persistence.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\obj\\",
+        "outputPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1099,11 +1099,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
-                "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
+              "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj": {
+                "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Application\\SKey.Application.csproj"
               },
-              "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
-                "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj"
+              "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
+                "projectPath": "G:\\SKeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj"
               }
             }
           }
@@ -1164,7 +1164,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
