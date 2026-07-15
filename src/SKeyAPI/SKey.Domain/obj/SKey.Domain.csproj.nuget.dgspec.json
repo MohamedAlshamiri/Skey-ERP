@@ -10,7 +10,7 @@
         "projectUniqueName": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
         "projectName": "SKey.Domain",
         "projectPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj",
-        "packagesPath": "C:\\Users\\PC\\AppData\\Local\\Temp\\cursor-sandbox-cache\\248a8c51068162bd1bbe8783226ae589\\nuget",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
         "outputPath": "D:\\SkeyERP\\SKeyERP\\src\\SKeyAPI\\SKey.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

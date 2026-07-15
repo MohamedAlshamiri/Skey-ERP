@@ -12,12 +12,19 @@ body {
   @apply font-cairo bg-slate-50 text-slate-900;
 }
 
-body, button, input, textarea, select {
+body,
+button,
+input,
+textarea,
+select {
   font-family: 'Cairo', 'Tajawal', sans-serif;
 }
 
 /* NG-Zorro Global Overrides using Tailwind */
-.ant-layout, .ant-layout-header, .ant-layout-content, .ant-layout-footer {
+.ant-layout,
+.ant-layout-header,
+.ant-layout-content,
+.ant-layout-footer {
   background: transparent;
 }
 
@@ -33,10 +40,80 @@ body, button, input, textarea, select {
   @apply rounded-card-lg overflow-hidden;
 }
 
-.ant-select-selector {
-  @apply rounded-2xl !border-slate-200 h-auto py-1;
+/* Force RTL layout and custom height for select dropdowns globally */
+.ant-select {
+  width: 100% !important;
+  text-align: right !important;
+  direction: rtl !important;
+
+  .ant-select-selector {
+    background-color: #f8fafc !important;
+    /* bg-slate-50 */
+    border: 1px solid #e2e8f0 !important;
+    /* border-slate-200 */
+    border-radius: 0.75rem !important;
+    /* rounded-xl */
+    height: 38px !important;
+    /* compact height matching input */
+    padding-left: 32px !important;
+    /* room for arrow on left */
+    padding-right: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease-in-out !important;
+
+    .ant-select-selection-item,
+    .ant-select-selection-placeholder {
+      font-size: 0.875rem !important;
+      display: flex !important;
+      align-items: center !important;
+      text-align: right !important;
+      right: 0 !important;
+      left: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  /* Center the chevron icon inside the select box */
+  .ant-select-arrow {
+    color: #94a3b8 !important;
+    right: auto !important;
+    left: 12px !important;
+    /* Force to left for RTL */
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Clear button styling */
+  .ant-select-clear {
+    right: auto !important;
+    left: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    background-color: transparent !important;
+  }
 }
 
 .ant-table {
   @apply rounded-card-md overflow-hidden;
 }
+
+/* Modal Overrides to Blur Background & Match Theme */
+.ant-modal-mask {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+.ant-modal-content {
+  border-radius: 1.5rem !important; /* rounded-3xl / 24px */
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  overflow: hidden !important;
+}

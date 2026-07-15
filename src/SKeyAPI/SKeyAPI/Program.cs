@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using SKey.Application;
 using SKey.Infrastructure;
 
@@ -13,6 +14,8 @@ public class Program
         builder.Services.AddInfrastructure(builder.Configuration);
 
         builder.Services.AddControllers();
+        builder.Services.AddFluentValidationAutoValidation();
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 

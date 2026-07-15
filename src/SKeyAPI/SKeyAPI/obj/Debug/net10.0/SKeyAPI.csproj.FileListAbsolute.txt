@@ -203,3 +203,8 @@ D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Application.pdb
 D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Infrastructure.pdb
 D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Domain.pdb
 D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Persistence.pdb
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\AutoMapper.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\FluentValidation.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\FluentValidation.AspNetCore.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\bin\Debug\net10.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\SkeyERP\SKeyERP\src\SKeyAPI\SKeyAPI\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

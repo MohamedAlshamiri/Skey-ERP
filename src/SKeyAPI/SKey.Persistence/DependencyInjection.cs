@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SKey.Application.Common.Interfaces;
+using SKey.Application.Common.Interfaces.Repositories;
 using SKey.Persistence.Context;
 using SKey.Persistence.Repositories;
 
@@ -20,9 +21,8 @@ public static class DependencyInjection
             provider.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-        // Register entity-specific repositories here as they are introduced:
-        // services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
 
         return services;
     }
